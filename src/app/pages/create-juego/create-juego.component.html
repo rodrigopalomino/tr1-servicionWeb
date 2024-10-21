@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+<div class="row pt-4 w-100">
+  <div class="col-2" style="border: 0px solid red"></div>
+  <div class="col-10" style="border: 0px solid blue">
+    <div class="container">
+      <h2>Crear Nuevo Juego</h2>
+      <!-- Formulario reactivo con la función onSubmit -->
+      <form [formGroup]="juegoForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre del Juego</label>
+          <input
+            type="text"
+            id="nombre"
+            class="form-control"
+            formControlName="nombre"
+            placeholder="Introduce el nombre del juego"
+            required
+          />
+          @if (juegoForm.get('nombre')?.invalid &&
+          juegoForm.get('nombre')?.touched) {
+          <small class="text-danger"
+            >El nombre es requerido y debe tener al menos 3 caracteres.</small
+          >
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción</label>
+          <textarea
+            id="descripcion"
+            class="form-control"
+            formControlName="descripcion"
+            placeholder="Introduce una descripción del juego"
+            rows="3"
+            required
+          ></textarea>
+          @if (juegoForm.get('descripcion')?.invalid &&
+          juegoForm.get('descripcion')?.touched) {
+          <small class="text-danger"
+            >La descripción es requerida y debe tener al menos 10
+            caracteres.</small
+          >
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha de Lanzamiento</label>
+          <input
+            type="date"
+            id="fecha"
+            class="form-control"
+            formControlName="fecha"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="desarrolladora" class="form-label">Desarrolladora</label>
+          <input
+            type="text"
+            id="desarrolladora"
+            class="form-control"
+            formControlName="desarrolladora"
+            placeholder="Introduce el nombre de la desarrolladora"
+            required
+          />
+        </div>
+
+        <!-- Checkboxes para Géneros -->
+        <div class="mb-3">
+          <label for="generos" class="form-label">Géneros</label>
+          @for (genero of generos; track genero.id) {
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [value]="genero.id"
+              (change)="onCheckChange($event, 'generos')"
+            />
+            <label class="form-check-label">{{ genero.nombre }}</label>
+          </div>
+          }
+        </div>
+
+        <!-- Checkboxes para Consolas -->
+        <div class="mb-3">
+          <label for="consolas" class="form-label">Consolas</label>
+          @for (consola of consolas; track consola.id) {
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [value]="consola.id"
+              (change)="onCheckChange($event, 'consolas')"
+            />
+            <label class="form-check-label">{{ consola.nombre }}</label>
+          </div>
+          }
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear Juego</button>
+      </form>
+    </div>
+  </div>
+</div>

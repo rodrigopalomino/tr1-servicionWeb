@@ -1,0 +1,72 @@
+@if (juego) {
+<app-navbar></app-navbar>
+
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="display-4 text-center">{{ juego.juego.nombre }}</h1>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/en/2/2f/Ultimate_Tenkaichi_Cover.PNG"
+        class="img-fluid"
+        alt="{{ juego.juego.nombre }}"
+      />
+    </div>
+    <div class="col-md-6">
+      <p class="lead">{{ juego.juego.descripcion }}</p>
+
+      <div class="d-flex mb-2">
+        <p class="me-2"><strong>Géneros:</strong></p>
+        <div>
+          @for (genero of juego.generos; track genero.generoId) {
+          <span class="badge text-bg-secondary me-1">
+            {{ genero.generoNombre }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <p class="me-2"><strong>Plataformas:</strong></p>
+        <div>
+          @for (consola of juego.consolas; track consola.consolaId) {
+          <span class="badge text-bg-info me-1">
+            {{ consola.consolaNombre }}
+          </span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h3 class="h4">Información adicional</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Fecha de lanzamiento:</strong>
+          {{ juego.juego.fecha }}
+        </li>
+        <li class="list-group-item">
+          <strong>Desarrolladora:</strong> {{ juego.juego.desarrolladora }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <a routerLink="/" class="btn btn-primary me-2"
+        >Volver a la lista de juegos</a
+      >
+      <button class="btn btn-danger" (click)="deleteJuego(juegoId)">
+        Eliminar Juego
+      </button>
+    </div>
+  </div>
+</div>
+}
