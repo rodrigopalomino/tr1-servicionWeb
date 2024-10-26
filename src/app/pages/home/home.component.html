@@ -7,10 +7,7 @@
         @for (juego of juegos; track juego) {
         <div class="col-3">
           <div class="card" [routerLink]="['/', juego.juegoId]">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/en/2/2f/Ultimate_Tenkaichi_Cover.PNG"
-              class="card-img-top"
-            />
+            <img src="{{ juego.juego.urlImg }}" class="card-img-top" />
             <div class="card-body">
               <h5
                 class="card-title text-truncate"

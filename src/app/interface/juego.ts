@@ -28,5 +28,6 @@ export interface Juego {
   nombre: string;
   descripcion: string;
   fecha: Date;
+  urlImg: string;
   desarrolladora: string;
 }

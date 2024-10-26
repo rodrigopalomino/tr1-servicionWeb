@@ -42,6 +42,7 @@ export class CreateJuegoComponent implements OnInit {
       descripcion: ['', [Validators.required, Validators.minLength(10)]],
       fecha: ['', Validators.required],
       desarrolladora: ['', [Validators.required, Validators.minLength(3)]],
+      urlImg: ['', [Validators.required, Validators.minLength(3)]],
       generos: this.fb.array([]),
       consolas: this.fb.array([]),
     });
