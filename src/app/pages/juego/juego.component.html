@@ -4,40 +4,40 @@
 <div class="container pt-4">
   <div class="row">
     <div class="col-12">
-      <h1 class="display-4 text-center">{{ juego.juego.nombre }}</h1>
+      <h1 class="display-4 text-center">{{ juego.nombre }}</h1>
     </div>
   </div>
 
   <div class="row mb-4">
     <div class="col-md-6">
       <img
-        src="{{ juego.juego.urlImg }}"
+        src="{{ juego.urlImg }}"
         class="img-fluid"
-        alt="{{ juego.juego.nombre }}"
+        alt="{{ juego.nombre }}"
       />
     </div>
     <div class="col-md-6">
-      <p class="lead">{{ juego.juego.descripcion }}</p>
+      <p class="lead">{{ juego.descripcion }}</p>
 
       <div class="d-flex mb-2">
-        <p class="me-2"><strong>Géneros:</strong></p>
+        <!-- <p class="me-2"><strong>Géneros:</strong></p> -->
         <div>
-          @for (genero of juego.generos; track genero.generoId) {
+          <!-- @for (genero of juego.generos; track genero.generoId) {
           <span class="badge text-bg-secondary me-1">
             {{ genero.generoNombre }}
           </span>
-          }
+          } -->
         </div>
       </div>
 
       <div class="d-flex">
-        <p class="me-2"><strong>Plataformas:</strong></p>
+        <!-- <p class="me-2"><strong>Plataformas:</strong></p> -->
         <div>
-          @for (consola of juego.consolas; track consola.consolaId) {
+          <!-- @for (consola of juego.consolas; track consola.consolaId) {
           <span class="badge text-bg-info me-1">
             {{ consola.consolaNombre }}
           </span>
-          }
+          } -->
         </div>
       </div>
     </div>
@@ -49,10 +49,10 @@
       <ul class="list-group">
         <li class="list-group-item">
           <strong>Fecha de lanzamiento:</strong>
-          {{ juego.juego.fecha }}
+          {{ juego.fecha }}
         </li>
         <li class="list-group-item">
-          <strong>Desarrolladora:</strong> {{ juego.juego.desarrolladora }}
+          <strong>Desarrolladora:</strong> {{ juego.desarrolladora }}
         </li>
       </ul>
     </div>

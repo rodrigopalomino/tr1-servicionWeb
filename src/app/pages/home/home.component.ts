@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoService } from '../../services/juego.service';
-import { JuegoDetalle } from '../../interface/juego';
+import { Juego, JuegoDetalle } from '../../interface/juego';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 
@@ -12,7 +12,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  juegos: JuegoDetalle[] = [];
+  juegos: Juego[] = [];
 
   constructor(private _juegoServices: JuegoService) {}
 

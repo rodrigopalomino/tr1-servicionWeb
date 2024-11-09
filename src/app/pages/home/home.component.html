@@ -6,8 +6,8 @@
       <div class="row g-3">
         @for (juego of juegos; track juego) {
         <div class="col-3">
-          <div class="card" [routerLink]="['/', juego.juegoId]">
-            <img src="{{ juego.juego.urlImg }}" class="card-img-top" />
+          <div class="card" [routerLink]="['/', juego.id]">
+            <img src="{{ juego.urlImg }}" class="card-img-top" />
             <div class="card-body">
               <h5
                 class="card-title text-truncate"
@@ -17,19 +17,19 @@
                   text-overflow: ellipsis;
                 "
               >
-                {{ juego.juego.nombre }}
+                {{ juego.nombre }}
               </h5>
 
-              <p class="card-text">{{ juego.juego.descripcion }}</p>
+              <p class="card-text">{{ juego.descripcion }}</p>
               <div class="d-flex">
-                <p class="me-2">Géneros:</p>
-                @for ( genero of juego.generos; track genero.generoId) {
+                <!-- <p class="me-2">Géneros:</p> -->
+                <!-- @for ( genero of juego.generos; track genero.generoId) {
                 <h5>
                   <span class="badge text-bg-secondary me-1">
                     {{ genero.generoNombre }}
                   </span>
                 </h5>
-                }
+                } -->
               </div>
               <!-- <div class="d-flex">
                 <p class="me-2">Plataformas:</p>

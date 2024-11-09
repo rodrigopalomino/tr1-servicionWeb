@@ -23,11 +23,13 @@ export interface Genero {
 }
 
 export interface Juego {
-  rese: any;
   id: number;
   nombre: string;
   descripcion: string;
   fecha: Date;
-  urlImg: string;
   desarrolladora: string;
+  urlImg: string;
+  clikes: number;
+  cdislikes: number;
+  ccomentarios: number;
 }

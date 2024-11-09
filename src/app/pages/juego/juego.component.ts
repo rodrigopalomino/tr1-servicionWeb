@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { JuegoDetalle } from '../../interface/juego';
+import { Juego, JuegoDetalle } from '../../interface/juego';
 import { JuegoService } from '../../services/juego.service';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 
@@ -13,7 +13,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 })
 export class JuegoComponent implements OnInit {
   juegoId!: string;
-  juego!: JuegoDetalle;
+  juego!: Juego;
 
   constructor(
     private route: ActivatedRoute,

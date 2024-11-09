@@ -3,14 +3,13 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { Consola, Genero } from '../../interface/juego';
 import { JuegoService } from '../../services/juego.service';
 import {
-  FormArray,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-juego',
@@ -43,8 +42,6 @@ export class CreateJuegoComponent implements OnInit {
       fecha: ['', Validators.required],
       desarrolladora: ['', [Validators.required, Validators.minLength(3)]],
       urlImg: ['', [Validators.required, Validators.minLength(3)]],
-      generos: this.fb.array([]),
-      consolas: this.fb.array([]),
     });
   }
 
@@ -60,37 +57,17 @@ export class CreateJuegoComponent implements OnInit {
     });
   }
 
-  onCheckChange(event: any, type: string) {
-    const formArray: FormArray = this.juegoForm.get(type) as FormArray;
-
-    if (event.target.checked) {
-      formArray.push(this.fb.control(event.target.value));
-    } else {
-      let i: number = 0;
-      formArray.controls.forEach((ctrl) => {
-        if (ctrl.value == event.target.value) {
-          formArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
-
   onSubmit() {
-    if (this.juegoForm.valid) {
-      const nuevoJuego = this.juegoForm.value;
-      this._juegoService.createJuego(nuevoJuego).subscribe({
-        next: (res: any) => {
-          this.route.navigate(['']);
-        },
-        error: (e: HttpErrorResponse) => {
-          console.log('error');
-          console.log(e);
-        },
-      });
-    } else {
-      console.log('Formulario no válido');
-    }
+    const nuevoJuego = this.juegoForm.value;
+    console.log(nuevoJuego);
+
+    this._juegoService.createJuego(nuevoJuego).subscribe({
+      next: (res: any) => {
+        this.route.navigate(['']);
+      },
+      error: (e: HttpErrorResponse) => {
+        console.log('Error al crear el juego:', e);
+      },
+    });
   }
 }
