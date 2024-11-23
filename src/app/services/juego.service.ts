@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   Consola,
@@ -17,8 +17,14 @@ export class JuegoService {
 
   constructor(private http: HttpClient) {}
 
-  getJuegos(): Observable<Juego[]> {
-    return this.http.get<Juego[]>(`${this.api}`);
+  getJuegos(nombre?: string): Observable<Juego[]> {
+    let params = new HttpParams();
+
+    if (nombre) {
+      params = params.set('nombre', nombre);
+    }
+
+    return this.http.get<Juego[]>(`${this.api}`, { params });
   }
 
   getJuego(juego_id: string): Observable<Juego> {
@@ -42,5 +48,19 @@ export class JuegoService {
 
   deleteJuego(juego_id: string) {
     return this.http.delete(`http://localhost:8080/api/juegos/${juego_id}`);
+  }
+
+  login(username: string, password: string) {
+    return this.http.post(`http://localhost:8080/api/usuarios/login`, {
+      username,
+      password,
+    });
+  }
+
+  createUsuario(username: string, password: string) {
+    return this.http.post(`http://localhost:8080/api/usuarios`, {
+      username,
+      password,
+    });
   }
 }

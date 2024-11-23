@@ -3,6 +3,19 @@
   <div class="col-2" style="border: 0px solid red"></div>
   <div class="col-10" style="border: 0px solid blue">
     <div class="container">
+      <div class="row mb-4">
+        <div class="col-12">
+          <form action="" [formGroup]="form" (input)="searchJuego()">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Buscar juegos..."
+              formControlName="nombre"
+            />
+          </form>
+        </div>
+      </div>
+
       <div class="row g-3">
         @for (juego of juegos; track juego) {
         <div class="col-3">
